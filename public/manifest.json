@@ -1,0 +1,22 @@
+{
+  "name": "Happy Valentine",
+  "short_name": "Valentine",
+  "description": "A special Valentine's gift",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060010",
+  "theme_color": "#060010",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/7.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/7.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

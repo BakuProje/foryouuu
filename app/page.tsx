@@ -10,6 +10,15 @@ export default function Home() {
   const [showLoveCode, setShowLoveCode] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const userImages = [
     '/1.jpeg',
     '/2.jpeg',
@@ -76,9 +85,9 @@ export default function Home() {
               {/* Gradient background with stronger colors */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#2d0a1a] via-[#0a0015] to-[#150a25]" />
               
-              {/* Large animated hearts background - More visible */}
+              {/* Large animated hearts background - Reduced for mobile */}
               <div className="absolute inset-0 overflow-hidden">
-                {[...Array(40)].map((_, i) => (
+                {[...Array(isMobile ? 15 : 40)].map((_, i) => (
                   <motion.div
                     key={i}
                     initial={{
@@ -101,7 +110,7 @@ export default function Home() {
                     }}
                     className="absolute text-red-500/40"
                   >
-                    <Heart size={Math.random() * 40 + 25} fill="currentColor" />
+                    <Heart size={isMobile ? Math.random() * 20 + 15 : Math.random() * 40 + 25} fill="currentColor" />
                   </motion.div>
                 ))}
               </div>
@@ -132,7 +141,7 @@ export default function Home() {
                 }}
               />
 
-              {/* Corner decorative hearts - Larger and more visible */}
+              {/* Corner decorative hearts - Responsive sizing */}
               <motion.div
                 animate={{
                   scale: [1, 1.15, 1],
@@ -143,9 +152,9 @@ export default function Home() {
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="absolute top-10 left-10"
+                className={isMobile ? "absolute top-5 left-5" : "absolute top-10 left-10"}
               >
-                <Heart className="w-28 h-28 text-red-500/30 fill-red-500/30" />
+                <Heart className={isMobile ? "w-16 h-16 text-red-500/30 fill-red-500/30" : "w-28 h-28 text-red-500/30 fill-red-500/30"} />
               </motion.div>
               
               <motion.div
@@ -159,46 +168,50 @@ export default function Home() {
                   delay: 1.5,
                   ease: "easeInOut"
                 }}
-                className="absolute bottom-10 right-10"
+                className={isMobile ? "absolute bottom-5 right-5" : "absolute bottom-10 right-10"}
               >
-                <Heart className="w-32 h-32 text-pink-500/30 fill-pink-500/30" />
+                <Heart className={isMobile ? "w-18 h-18 text-pink-500/30 fill-pink-500/30" : "w-32 h-32 text-pink-500/30 fill-pink-500/30"} />
               </motion.div>
 
-              <motion.div
-                animate={{
-                  scale: [1, 1.15, 1],
-                  opacity: [0.15, 0.3, 0.15]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  delay: 0.75,
-                  ease: "easeInOut"
-                }}
-                className="absolute top-1/2 right-20"
-              >
-                <Heart className="w-20 h-20 text-red-400/30 fill-red-400/30" />
-              </motion.div>
+              {!isMobile && (
+                <>
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.15, 1],
+                      opacity: [0.15, 0.3, 0.15]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      delay: 0.75,
+                      ease: "easeInOut"
+                    }}
+                    className="absolute top-1/2 right-20"
+                  >
+                    <Heart className="w-20 h-20 text-red-400/30 fill-red-400/30" />
+                  </motion.div>
 
-              <motion.div
-                animate={{
-                  scale: [1, 1.15, 1],
-                  opacity: [0.15, 0.3, 0.15]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  delay: 2.25,
-                  ease: "easeInOut"
-                }}
-                className="absolute bottom-1/3 left-16"
-              >
-                <Heart className="w-24 h-24 text-pink-400/30 fill-pink-400/30" />
-              </motion.div>
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.15, 1],
+                      opacity: [0.15, 0.3, 0.15]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      delay: 2.25,
+                      ease: "easeInOut"
+                    }}
+                    className="absolute bottom-1/3 left-16"
+                  >
+                    <Heart className="w-24 h-24 text-pink-400/30 fill-pink-400/30" />
+                  </motion.div>
+                </>
+              )}
 
-              {/* Floating sparkles */}
+              {/* Floating sparkles - Reduced for mobile */}
               <div className="absolute inset-0 pointer-events-none">
-                {[...Array(25)].map((_, i) => (
+                {[...Array(isMobile ? 10 : 25)].map((_, i) => (
                   <motion.div
                     key={i}
                     initial={{

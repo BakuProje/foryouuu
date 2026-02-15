@@ -12,6 +12,24 @@ A beautiful, interactive, and romantic web experience designed as a special Vale
 - **Background Music**: Autoplaying and looping romantic music (`pretty.mp3`).
 - **Premium UI**: Crafted with Tailwind CSS, Framer Motion, and Playfair Display typography.
 
+## 📱 Mobile Optimization
+
+This project is fully optimized for mobile devices with:
+- ✅ Responsive design for all screen sizes
+- ✅ Reduced animations on mobile for better performance
+- ✅ Lazy loading images
+- ✅ PWA support (installable on mobile)
+- ✅ Optimized for slow connections
+
+### Mobile Testing
+```bash
+npm run dev
+```
+Then open on your mobile device using your computer's IP address:
+`http://[YOUR-IP]:3000`
+
+For detailed mobile optimization info, see [MOBILE_OPTIMIZATION.md](MOBILE_OPTIMIZATION.md)
+
 ## 🚀 Getting Started
 
 Follow these steps to get a copy of the project up and running on your local machine.

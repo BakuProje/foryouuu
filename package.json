@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "optimize:images": "node scripts/optimize-images.js",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@use-gesture/react": "^10.3.1",

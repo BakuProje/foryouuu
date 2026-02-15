@@ -24,8 +24,19 @@ const audiowide = Audiowide({
 });
 
 export const metadata: Metadata = {
-  title: "Happy Valentine L",
-  description: "A special Valentine's gift for L ❤️",
+  title: "Happy Valentine Cuaaa",
+  description: "A special Valentine's gift for Cuaa ❤️",
+  icons: {
+    icon: '/7.jpeg',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  themeColor: '#060010',
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
